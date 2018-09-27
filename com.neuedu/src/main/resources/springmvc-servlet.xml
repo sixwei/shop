@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+	<!-- 原来利用bean进行配置太繁琐 -->
+
+	<!-- 现在利用注解的方式进行配置 -->
+	<context:component-scan base-package="com.neuedu.controller" />
+	<context:annotation-config />
+	
+	
+	
+
+
+	<!-- <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
+		/> <property name="order" value="1" /> 前缀 <property name="prefix" value="/admin/" 
+		/> 后缀 <property name="suffix" value=".jsp" /> </bean> -->
+
+	<!-- 对于文件上传的配置 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+
+	<!-- 对于利用ResponseBody时的配置 -->
+
+
+	
+
+
+</beans>

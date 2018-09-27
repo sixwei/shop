@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClassesMapper">
+	<select id="findByTeacherName" resultMap="ClassesMap">
+		select *
+		from classes c join teacher t
+		on c.cid = t.classid
+		where t.tname = #{tname}
+	</select>
+
+	<resultMap id="ClassesMap" type="Classes">
+		<id property="cid" column="cid" />
+		<result property="cname" column="cname" />
+		<association property="teacher" javaType="Teacher">
+			<id property="tid" column="tid" />
+			<result property="tname" column="tname" />
+		</association>
+	</resultMap>
+	
+	<select id="findAllStudentByTName" resultMap="StudentMap">
+	     
+	     
+	     select *
+	        from class c join
+	
+	</select>
+
+
+
+
+</mapper>
