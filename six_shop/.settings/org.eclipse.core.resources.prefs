@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//WebContent/admin/admins.jsp=GBK
+encoding//WebContent/admin/login.jsp=GBK
+encoding//WebContent/pro/cart.jsp=GBK
+encoding//WebContent/pro/header.jsp=GBK
+encoding//WebContent/pro/index.jsp=GBK
+encoding//WebContent/pro/login.jsp=GBK
+encoding//WebContent/pro/menu.jsp=GBK
+encoding//WebContent/pro/order.jsp=GBK
+encoding//WebContent/pro/view.jsp=GBK
+encoding//src/com/six/dao/impl/CategoryDaoImplement.java=UTF-8
