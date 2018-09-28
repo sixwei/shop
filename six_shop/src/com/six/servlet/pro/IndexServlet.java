@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.six.dao.AddressDao;
 import com.six.dao.FireproDao;
+import com.six.dao.impl.AddressDaoImpl;
 import com.six.dao.impl.FireproDaoImpl;
 import com.six.dao.impl.OrderDaoImpl;
 import com.six.dao.impl.ProductDaoImplement;
 import com.six.dao.impl.UserDaoImplement;
+import com.six.entity.Address;
 import com.six.entity.Cart;
 import com.six.entity.CartItem;
 import com.six.entity.Firepro;
@@ -48,6 +51,11 @@ public class IndexServlet extends HttpServlet {
 		UserDaoImplement userDao = new UserDaoImplement();
 		
 		FireproDao firedao = new FireproDaoImpl();
+		
+		//地址的dao
+		AddressDao addredao = new AddressDaoImpl();
+		
+		
 		
 		if("/index".equals(path)) {
 			//最新的产品的列表
@@ -152,9 +160,20 @@ public class IndexServlet extends HttpServlet {
 				response.sendRedirect("index.pro");
 			}
 			
-		}else if("/firepro".equals(path)) {
+		}else if("/addAddre".equals(path)) {
 			
+			String province = request.getParameter("province");
+			String city = request.getParameter("city");
+			String area = request.getParameter("area");
 			
+			String address = province +city+area;
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
+			int uid = user.getId();
+			
+			addredao.addAddre(uid, address);
+			
+			response.sendRedirect("cart.jsp");
 			
 		}
 		

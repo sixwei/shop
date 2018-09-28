@@ -1,13 +1,14 @@
 
-<%@page contentType="text/html; charset=gbk" pageEncoding="gbk" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<%@page contentType="text/html; charset=gbk" pageEncoding="gbk"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
 <html>
 <head>
 <meta charset="gbk">
 <title>电商平台首页</title>
 <!--js-->
+<script src="js/prototype.js"></script>
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/common.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
@@ -49,34 +50,34 @@
 <body>
 	<div class="mainContainer sixteen container">
 		<!--Header Block-->
-	
-	<%@include file="header.jsp" %>
-		
+
+		<%@include file="header.jsp"%>
+
 		<!--Content Block-->
 		<section class="content-wrapper">
 			<div class="content-container container">
 				<div class="col-1-layout">
 					<c:forEach var="item" items="${cart.items }">
-							<ul class="shopping-cart-table">
-								<li>
-									<div class="img-box">
-										<img src="images/cart_img.png" title="" alt="" />
-									</div> <a class="edit-btn" href="#" title="编辑">编辑</a>
-								</li>
-								<li>
-									<div class="remove-item-btn">
-										<a href="#" title="Remove"><img
-											src="images/delete_item_btn.png" title="删除" alt="删除" /></a>
-									</div>
-									<div class="pro-name">${item.p.name }</div>
-									<div class="pro-qty">
-										<input type="text" value="${item.qty }" />
-									</div>
-									<div class="pro-price">￥${item.p.normalPrice }</div>
-									<div class="pro-price">小计:￥${item.totals }</div>
-								</li>
-							</ul>
-						</c:forEach>
+						<ul class="shopping-cart-table">
+							<li>
+								<div class="img-box">
+									<img src="images/cart_img.png" title="" alt="" />
+								</div> <a class="edit-btn" href="#" title="编辑">编辑</a>
+							</li>
+							<li>
+								<div class="remove-item-btn">
+									<a href="#" title="Remove"><img
+										src="images/delete_item_btn.png" title="删除" alt="删除" /></a>
+								</div>
+								<div class="pro-name">${item.p.name }</div>
+								<div class="pro-qty">
+									<input type="text" value="${item.qty }" />
+								</div>
+								<div class="pro-price">￥${item.p.normalPrice }</div>
+								<div class="pro-price">小计:￥${item.totals }</div>
+							</li>
+						</ul>
+					</c:forEach>
 					<div class="show-option-block">
 						<a href="#" title="Show Options">显示选项</a>
 					</div>
@@ -92,28 +93,38 @@
 							<button class="orange-btn" title="Apply Coupon">使用优惠券</button>
 						</div>
 						<div class="cart-box">
-							<div class="box-title">运费及税估价;</div>
-							<div class="box-content">
-								<p>Enter your destnation to get a shipping estimate</p>
-								<ul>
-									<li><label>国家<em>*</em></label> <select><option>中国</option></select>
-									</li>
-									<li><label>地区</label> <select><option>请选择地区、州或省</option></select>
-									</li>
-									<li><label>邮编</label> <input type="text" /></li>
-								</ul>
-							</div>
-							<button class="orange-btn" title="获取报价">获取报价</button>
+
+							<form action="addAddre.pro" method="post">
+								<div class="box-title">请选择地址</div>
+								<div class="box-content">
+									<p>Enter your destnation to get a shipping estimate</p>
+									<ul>
+										<li><label>国家<em>*</em></label> <select id="province">
+												<option value="-1">---请选择省份---</option>
+										</select></li>
+										<li><label>地区</label> <select id="city">
+												<option value="-1">---请选择城市---</option>
+
+										</select></li>
+										<li><label>邮编</label> <select id="area">
+												<option value="-1">---请选择区---</option>
+
+										</select></li>
+									</ul>
+								</div>
+								<input type="submit" class="orange-btn" value="添加地址"></input>
+							</form>
 						</div>
 					</div>
 					<div class="shopping-cart-totals">
-						
+
 						<div class="grand-row">
 							<div class="left">总计</div>
 							<div class="right">￥${cart.totals }</div>
 						</div>
 						<ul class="checkout-types">
-							<li><button class="orange-btn" title="付款" onclick="location.href='order.pro'">付款</button></li>
+							<li><button class="orange-btn" title="付款"
+									onclick="location.href='order.pro'">付款</button></li>
 							<li><a href="#" title="更多地址">更多地址</a></li>
 						</ul>
 					</div>
@@ -132,8 +143,8 @@
 									<div class="add-cart-row">
 										<button class="orange-btn" title="添加购物车">添加购物车</button>
 									</div>
-									<a href="#" class="add-wishlist" title="添加收藏">添加收藏</a>
-									<a href="#" class="add-compare" title="同类比较">同类比较</a>
+									<a href="#" class="add-wishlist" title="添加收藏">添加收藏</a> <a
+										href="#" class="add-compare" title="同类比较">同类比较</a>
 								</div>
 							</li>
 							<li>
@@ -148,8 +159,8 @@
 									<div class="add-cart-row">
 										<button class="orange-btn" title="添加购物车">添加购物车</button>
 									</div>
-									<a href="#" class="add-wishlist" title="添加收藏">添加收藏</a>
-									<a href="#" class="add-compare" title="同类比较">同类比较</a>
+									<a href="#" class="add-wishlist" title="添加收藏">添加收藏</a> <a
+										href="#" class="add-compare" title="同类比较">同类比较</a>
 								</div>
 							</li>
 							<li>
@@ -164,8 +175,8 @@
 									<div class="add-cart-row">
 										<button class="orange-btn" title="添加购物车">添加购物车</button>
 									</div>
-									<a href="#" class="add-wishlist" title="添加收藏">添加收藏</a>
-									<a href="#" class="add-compare" title="同类比较">同类比较</a>
+									<a href="#" class="add-wishlist" title="添加收藏">添加收藏</a> <a
+										href="#" class="add-compare" title="同类比较">同类比较</a>
 								</div>
 							</li>
 							<li>
@@ -180,8 +191,8 @@
 									<div class="add-cart-row">
 										<button class="orange-btn" title="添加购物车">添加购物车</button>
 									</div>
-									<a href="#" class="add-wishlist" title="添加收藏">添加收藏</a>
-									<a href="#" class="add-compare" title="同类比较">同类比较</a>
+									<a href="#" class="add-wishlist" title="添加收藏">添加收藏</a> <a
+										href="#" class="add-compare" title="同类比较">同类比较</a>
 								</div>
 							</li>
 						</ul>
@@ -273,3 +284,57 @@
 	<!--页脚结束-->
 </body>
 </html>
+
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			type : "get",
+			url : "province.menu",
+			async : true,
+			success : function(provinces) {
+				var ps = provinces.evalJSON();
+				for (i = 0; i < ps.length; ++i) {
+					$("#province").append(
+							"<option value='"+ps[i].provinceid+"'>"
+									+ ps[i].province + "</option>")
+				}
+			}
+		});
+
+		$("#province").change(
+				function() {
+					$("#city").html("");
+					$.ajax({
+						type : "get",
+						url : "city.menu?provinceid=" + $("#province").val(),
+						async : true,
+						success : function(cities) {
+							var cs = cities.evalJSON();
+							for (i = 0; i < cs.length; i++) {
+								$("#city").append(
+										"<option value='"+cs[i].cityID+"'>"
+												+ cs[i].city + "</option>")
+							}
+						}
+					});
+				});
+
+		$("#city").change(
+				function() {
+					$("#area").html("");
+					$.ajax({
+						type : "get",
+						url : "area.menu?cityid=" + $("#city").val(),
+						async : true,
+						success : function(areas) {
+							var as = areas.evalJSON();
+							for (i = 0; i < as.length; i++) {
+								$("#area").append(
+										"<option value='"+as[i].areaID+"'>"
+												+ as[i].area + "</option>")
+							}
+						}
+					});
+				});
+	});
+</script>

@@ -343,30 +343,8 @@
 			</div>
 		</section>
 	</div>
+	
 	<!-- 最火商品的javascript -->
-	
-	<script type="text/javascript">
-	
-	      $(function(){
-	    	  $("#firepro").append("
-				<li>
-				<div class="pro-img">
-					<img title="最火商品 " alt="最火商品 " src="images/iPhoneX.jpg" />
-				</div>
-				<div class="pro-hover-block">
-					<h4 class="pro-name">${pro.name }</h4>
-					<div class="link-block">
-						<a href="#quick-view-container" class="quickllook inline"
-							title="快速预览">快速预览</a> <a href="view.pro?id=${pro.id }" class="quickproLink"
-							title="商品链接">商品链接</a>
-					</div>
-					<div class="pro-price">￥${pro.normalPrice }</div>
-				</div>
-			</li>")
-	      });
-	
-	
-	</script>
 	
 	
 	<!--Quick view Block-->
